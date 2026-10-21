@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Для Кызым 💙</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. ИЗВИНЕНИЕ -->
+  <main class="screen active" id="intro">
+    <div class="content">
+      <div class="heart">💙</div>
+      <p class="eyebrow">Только для тебя</p>
+      <h1>Кызым, я хочу извиниться перед тобой</h1>
+      <p class="description">Ты готова меня выслушать?</p>
+      <div class="buttons">
+        <button class="yes-btn" id="yesBtn">Да 💙</button>
+        <button class="no-btn" id="noBtn">Нет 🙈</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 2. ПИСЬМА НА ФОТОГРАФИЯХ -->
+  <main class="screen" id="apology">
+    <div class="content scrapbook">
+      <p class="eyebrow">От всего сердца</p>
+      <h1>Мне нужно тебе кое-что сказать...</h1>
+      <p class="description">
+        Нажми на фотографию — она приблизится и перевернётся 💌
+      </p>
+
+      <div class="photos">
+        <button class="photo-card" data-message="0" aria-label="Открыть первое письмо">
+          <span class="photo-inner">
+            <span class="photo-front">
+              <img src="images/photo1.jpg" alt="Наша первая фотография">
+              <span>Прости меня 💙</span>
+            </span>
+            <span class="photo-back">
+              <span class="letter-title">Первое письмо 💙</span>
+              <span class="letter-content" id="message0"></span>
+            </span>
+          </span>
+        </button>
+
+        <button class="photo-card" data-message="1" aria-label="Открыть второе письмо">
+          <span class="photo-inner">
+            <span class="photo-front">
+              <img src="images/photo2.jpg" alt="Наша вторая фотография">
+              <span>Я хочу стать лучше</span>
+            </span>
+            <span class="photo-back">
+              <span class="letter-title">Второе письмо 💌</span>
+              <span class="letter-content" id="message1"></span>
+            </span>
+          </span>
+        </button>
+
+        <button class="photo-card" data-message="2" aria-label="Открыть третье письмо">
+          <span class="photo-inner">
+            <span class="photo-front">
+              <img src="images/photo3.jpg" alt="Наша третья фотография">
+              <span>Ты очень дорога мне</span>
+            </span>
+            <span class="photo-back">
+              <span class="letter-title">Третье письмо 💙</span>
+              <span class="letter-content" id="message2"></span>
+            </span>
+          </span>
+        </button>
+      </div>
+
+      <p id="photoHint" class="photo-hint">
+        Выбери фотографию, чтобы прочитать письмо.
+      </p>
+
+      <button id="readBtn" class="yes-btn" hidden>Я прочитала 💌</button>
+
+      <div id="decision" hidden>
+        <h2>Сможешь дать мне второй шанс?</h2>
+        <p class="description">
+          Я очень надеюсь, что мы сможем всё исправить 💙
+        </p>
+        <div class="buttons decision-buttons">
+          <button class="yes-btn" id="forgiveBtn">
+            Простить и дать второй шанс 💙
+          </button>
+          <button class="no-btn" id="notForgiveBtn">Не простить 🙈</button>
+        </div>
+        <p id="decisionMessage" class="description" hidden></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- 3. ПРИГЛАШЕНИЕ -->
+  <main class="screen" id="invitation">
+    <div class="content">
+      <div class="heart">❄️💙</div>
+      <p class="eyebrow">Один особенный день</p>
+      <h1>Давай проведём время вместе?</h1>
+      <p class="description">
+        Я хочу подарить нам тёплый и счастливый день в ноябре.
+      </p>
+      <div class="buttons">
+        <button class="yes-btn" id="dateYesBtn">Да 💙</button>
+        <button class="no-btn" id="dateNoBtn">Нет 🙈</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 4. КРАСИВЫЙ КАЛЕНДАРЬ -->
+  <main class="screen plan-screen" id="datePage">
+    <div class="content plan-content calendar-content">
+      <p class="eyebrow">Шаг 1 из 4</p>
+      <div class="calendar-heart">💙</div>
+      <h1>Когда увидимся?</h1>
+      <p class="description">
+        Выбери день, который станет особенным для нас.
+      </p>
+
+      <div class="calendar">
+        <div class="calendar-header">
+          <button type="button" class="calendar-arrow"
+            id="prevMonth" aria-label="Предыдущий месяц">‹</button>
+          <div>
+            <h2 id="calendarMonth">Ноябрь</h2>
+            <p class="calendar-year" id="calendarYear">2026</p>
+          </div>
+          <button type="button" class="calendar-arrow"
+            id="nextMonth" aria-label="Следующий месяц">›</button>
+        </div>
+
+        <div class="weekdays">
+          <span>Пн</span><span>Вт</span><span>Ср</span>
+          <span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+        </div>
+
+        <div class="calendar-days" id="calendarDays"></div>
+
+        <div class="selected-date">
+          <span>💌</span>
+          <p id="selectedDateText">Выбери нашу дату</p>
+        </div>
+      </div>
+
+      <input id="date" type="hidden">
+      <p id="dateError" class="error" hidden></p>
+
+      <div class="buttons">
+        <button class="no-btn back-btn" data-back="invitation">Назад</button>
+        <button class="yes-btn" id="dateNextBtn">Далее 💙</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 5. ВРЕМЯ -->
+  <main class="screen plan-screen" id="timePage">
+    <div class="content plan-content">
+      <p class="eyebrow">Шаг 2 из 4</p>
+      <div class="calendar-heart">🕒</div>
+      <h1>Во сколько встретимся?</h1>
+      <p class="description">Выбери удобное для тебя время.</p>
+
+      <label for="time">Время встречи</label>
+      <input id="time" type="time" value="17:00">
+
+      <div class="buttons">
+        <button class="no-btn back-btn" data-back="datePage">Назад</button>
+        <button class="yes-btn" id="timeNextBtn">Далее 💙</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 6. МЕСТО -->
+  <main class="screen plan-screen" id="placePage">
+    <div class="content plan-content">
+      <p class="eyebrow">Шаг 3 из 4</p>
+      <div class="calendar-heart">🌲</div>
+      <h1>Куда пойдём?</h1>
+      <p class="description">Можно выбрать несколько вариантов.</p>
+
+      <div class="choices">
+        <label><input type="checkbox" name="place" value="Парк"> 🌲 Парк</label>
+        <label><input type="checkbox" name="place" value="Кафе"> ☕ Кафе</label>
+        <label><input type="checkbox" name="place" value="Скамейка"> 🪑 Скамейка</label>
+        <label><input type="checkbox" name="place" value="Кино"> 🎬 Кино</label>
+      </div>
+
+      <p id="placeError" class="error" hidden></p>
+
+      <div class="buttons">
+        <button class="no-btn back-btn" data-back="timePage">Назад</button>
+        <button class="yes-btn" id="placeNextBtn">Далее 💙</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 7. НАПИТКИ -->
+  <main class="screen plan-screen" id="drinkPage">
+    <div class="content plan-content">
+      <p class="eyebrow">Шаг 4 из 4</p>
+      <div class="calendar-heart">🥤</div>
+      <h1>Что будем пить?</h1>
+      <p class="description">Выбери то, что тебе хочется 💗</p>
+
+      <div class="choices">
+        <label><input type="checkbox" name="drink" value="Кола"> 🥤 Кола</label>
+        <label><input type="checkbox" name="drink" value="Кокосовая вода"> 🥥 Кокосовая вода</label>
+        <label><input type="checkbox" name="drink" value="Клубничный коктейль"> 🍓 Клубничный коктейль</label>
+        <label><input type="checkbox" name="drink" value="Всё вместе"> 💗 Всё вместе</label>
+      </div>
+
+      <p id="drinkError" class="error" hidden></p>
+
+      <div class="buttons">
+        <button class="no-btn back-btn" data-back="placePage">Назад</button>
+        <button class="yes-btn" id="confirmBtn">Подтвердить 💌</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 8. ФИНАЛ -->
+  <main class="screen" id="final-screen">
+    <div class="content">
+      <div class="heart">💙</div>
+      <p class="eyebrow">Наш особенный день</p>
+      <h1>Договорились!</h1>
+      <p class="description">Я буду ждать этот день с улыбкой.</p>
+      <div id="summary" class="summary"></div>
+      <p class="description">Спасибо, что выслушала меня, Кызым 💙</p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
